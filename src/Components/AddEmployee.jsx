@@ -13,7 +13,8 @@ const AddEmployee = () => {
     image: "",
   });
   const [category, setCategory] = useState([]);
-  const navigate = useNavigate()
+  const [Loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -28,48 +29,25 @@ const AddEmployee = () => {
       .catch((err) => console.log(err));
   }, []);
 
-/*   const handleSubmit = (e) => {
-    e.preventDefault()
-    const formData = new FormData();
-    formData.append('name', employee.name);
-    formData.append('email', employee.email);
-    formData.append('password', employee.password);
-    formData.append('address', employee.address);
-    formData.append('salary', employee.salary);
-    formData.append('image', employee.image);
-    formData.append('category_id', employee.category_id);
-
-    axios.post('http://localhost:3000/auth/add_employee', formData)
-    .then(result => {
-        if(result.data.Status) {
-            navigate('/dashboard/employee')
-        } else {
-            alert(result.data.Error)
-        }
-    })
-    .catch(err => console.log(err))
-  } */
-
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(employee);
-
-    axios.post('http://localhost:3000/auth/add_employee', employee,{
-      headers : {
-        "Content-Type" : "multipart/form-data"
-      }
-    })
-    .then(result => {
-        if(result.data.Status) {
-          console.log(result);
-            navigate('/dashboard/employee')
-        } else {
-          console.log(result);
-            alert(result.data.Error)
-        }
-    })
-    .catch(err => console.log(err))
-  }
+    e.preventDefault();
+     console.log(employee);
+    setLoading(true);
+    axios
+      .post("http://localhost:3000/auth/add_employee", employee, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((result) => {
+        navigate("/dashboard/employee");
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  };
 
   return (
     <div className="d-flex justify-content-center align-items-center mt-3">
@@ -99,7 +77,6 @@ const AddEmployee = () => {
               className="form-control rounded-0"
               id="inputEmail4"
               placeholder="Enter Email"
-              autoComplete="off"
               onChange={(e) =>
                 setEmployee({ ...employee, email: e.target.value })
               }
@@ -151,10 +128,25 @@ const AddEmployee = () => {
             <label for="category" className="form-label">
               Category
             </label>
-            <select name="category" id="category" className="form-select"
-                onChange={(e) => setEmployee({...employee, category_id: e.target.value})}>
-              {category.map((c,index) => {
-                return <option key={index} value={c.id} defaultValue="1">{c.name}</option>;
+            <select
+              name="category"
+              id="category"
+              className="form-select"
+/*               onClick={() => {
+                
+                console.log(employee);
+              }} */
+              onChange={(e) => {
+                setEmployee({ ...employee, category_id: e.target.value });
+              }}
+            >
+              <option></option>
+              {category.map((c, index) => {
+                return (
+                  <option key={index} value={c.id}>
+                    {c.name}
+                  </option>
+                );
               })}
             </select>
           </div>
@@ -167,12 +159,32 @@ const AddEmployee = () => {
               className="form-control rounded-0"
               id="inputGroupFile01"
               name="image"
-              onChange={(e) => setEmployee({...employee, image: e.target.files[0]})}
+              onChange={(e) =>
+                setEmployee({ ...employee, image: e.target.files[0] })
+              }
             />
           </div>
           <div className="col-12">
-            <button type="submit" className="btn btn-primary w-100">
-              Add Employee
+            <button
+              type="submit"
+              className={`btn btn-primary w-100 ${
+                Loading &&
+                "d-flex gap-2 justify-content-center align-items-center"
+              } `}
+              disabled={Loading}
+            >
+              {Loading ? (
+                <>
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  <span>Loading...</span>
+                </>
+              ) : (
+                "Add Admin"
+              )}
             </button>
           </div>
         </form>

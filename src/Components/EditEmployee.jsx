@@ -9,7 +9,7 @@ const EditEmployee = () => {
         email: "",
         salary: "",
         address: "",
-        category_id: "",
+        category_id: 1,
       });
       const [category, setCategory] = useState([])
       const navigate = useNavigate()

@@ -92,7 +92,15 @@ const Home = () => {
         </div>
       </div>
       <div className="mt-4 px-5 pt-3">
-        <h3>List of Admins</h3>
+        <div className="d-flex justify-content-between ">
+          <h3>List of Admins</h3>
+          <button
+            className="btn btn-success"
+            onClick={() => navigate("/dashboard/add_admin")}
+          >
+            Add Admin
+          </button>
+        </div>
         <table className="table">
           <thead>
             <tr>
@@ -110,7 +118,7 @@ const Home = () => {
                   <button
                     disabled={allow_edit(a.email)}
                     className="btn btn-info btn-sm me-2"
-                    onClick={() => navigate(`/dashboard/edit_admin/${a.id}`)}
+                    onClick={() => navigate(`/dashboard/edit_admin`)}
                   >
                     Edit
                   </button>

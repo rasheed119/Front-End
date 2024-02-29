@@ -1,10 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import UseAdminStore from "../Store/store";
 
 const EditAdmin = () => {
-  const { id } = useParams();
   const { data, update } = UseAdminStore((state) => state);
   const [admin, setAdmin] = useState({
     name: data.Name,
@@ -15,10 +14,11 @@ const EditAdmin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:3000/auth/edit_admin/${id}`, admin)
+      .put(`http://localhost:3000/auth/edit_admin/${+data.id}`, admin)
       .then((result) => {
         if (result.data.Status) {
-          update({ id, Name: admin.name, email: admin.email });
+          update({ id : data.id, Name: admin.name, email: admin.email });
+          alert("Updated")
           navigate("/dashboard");
         } else {
           alert(result.data.Error);

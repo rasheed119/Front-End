@@ -26,6 +26,7 @@ const EditEmployee = () => {
 
         axios.get('http://localhost:3000/auth/employee/'+id)
         .then(result => {
+          console.log(result.data.Result[0])
             setEmployee({
                 ...employee,
                 name: result.data.Result[0].name,

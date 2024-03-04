@@ -1,83 +1,48 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
- 
- 
+import React from "react";
+import UseEmployeeStore from "../Store/EmployeeStore";
+
 const EmployeeDetail = () => {
-    const [employee, setEmployee] = useState([])
-    const {id} = useParams()
-    const navigate = useNavigate()
-    useEffect(() => {
-        axios.get('http://localhost:3000/employee/detail/'+id)
-        .then(result => {
-            setEmployee(result.data[0])
-        })
-        .catch(err => console.log(err))
-    }, [])
-    const handleLogout = () => {
-        axios.get('http://localhost:3000/employee/logout')
-        .then(result => {
-          if(result.data.Status) {
-            localStorage.removeItem("valid")
-            navigate('/')
-          }
-        }).catch(err => console.log(err))
-      }
+  const { name, email, address, salary, category, image } = UseEmployeeStore(
+    (store) => store.data
+  );
   return (
     <div>
-        <div className="p-2 d-flex justify-content-center shadow">
-            <h4 className='heading'>Employee Management System</h4>
-            <button className='btn btn-danger' onClick={handleLogout}>Logout</button>
-        </div>
-        {/* <div className='d-flex justify-content-center flex-column align-items-center mt-3'>
-            <img src={`http://localhost:3000/Images/`+employee.image} className='emp_det_image'/>
-            <div className='d-flex align-items-center flex-column mt-5'>
-                <h3>Name: {employee.name}</h3>
-                <h3>Email: {employee.email}</h3>
-                <h3>Salary: ${employee.salary}</h3>
-            </div>
-            <div>
-                <button className='btn btn-primary me-2'>Edit</button>
-                <button className='btn btn-danger' onClick={handleLogout}>Logout</button>
-            </div>
-        </div>
-    </div> */}
-    <div>
+      <div>
         <div class="container mt-5 d-flex justify-content-center card-details">
- 
-  <div class="card p-3">
-    <div class="d-flex align-items-center details">
-        <div class="image">
-    <img src={`http://localhost:3000/Images/`+employee.image} class="rounded" width="250" />
-    </div>
-    <div class="ml-3 w-100">      
-       <h4 class="mb-0 mt-0">{employee.name}</h4>
-       <span>Full Stack Developer</span>
-       <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
-        <div class="d-flex flex-column">
-            <span class="articles">Email</span>
-            <span class="number1">{employee.email}</span>          
-        </div>
-        <div class="d-flex flex-column">
-            <span class="followers">Address</span>
-            <span class="number2">{employee.address}</span>        
-        </div>
- 
-        <div class="d-flex flex-column">
-            <span class="rating">Salary</span>
-            <span class="number3">{employee.salary}</span>
-        </div>
-       </div>
-       <div className='edit-logout'>
-                <button className='btn btn-primary me-2' onClick={() => navigate(`/dashboard/edit_employee/:id`)}>Edit</button>
+          <div class="card p-3">
+            <div class="d-flex align-items-center details">
+              <div class="image">
+                <img
+                  src={`http://localhost:3000/Images/` + image}
+                  class="rounded"
+                  width="250"
+                />
+              </div>
+              <div class="ml-3 w-100">
+                <h4 class="mb-0 mt-0">{name}</h4>
+                <span>{category}</span>
+                <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                  <div class="d-flex flex-column">
+                    <span class="articles">Email</span>
+                    <span class="number1">{email}</span>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <span class="followers">Address</span>
+                    <span class="number2">{address}</span>
+                  </div>
+
+                  <div class="d-flex flex-column">
+                    <span class="rating">Salary</span>
+                    <span class="number3">{salary}</span>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
       </div>
-    </div>        
-   </div>    
-  </div>
-  </div>
- </div>
-  )
-}
- 
-export default EmployeeDetail
+    </div>
+  );
+};
+
+export default EmployeeDetail;

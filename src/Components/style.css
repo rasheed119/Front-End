@@ -1,75 +1,112 @@
 .loginPage {
-    background: url('Images/employeems.jpeg');
-    background: linear-gradient(rgba(11, 11, 11, 0.5), rgba(10, 10, 10, 0.5)), url("Images/employeems.jpeg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 120%;
+  background: url("Images/employeems.jpeg");
+  background: linear-gradient(rgba(11, 11, 11, 0.5), rgba(10, 10, 10, 0.5)),
+    url("Images/employeems.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 120%;
 }
 
 .loginForm {
-    background-color: rgba(1, 32, 93, 0.6);
-    color: white;
+  background-color: rgba(1, 32, 93, 0.6);
+  color: white;
 }
 
 ul li :hover {
-    background-color: gray;
+  background-color: gray;
 }
 
 .employee_image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .emp_det_image {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
 }
-.card{
-    width: 70%;
-    border: none;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  }
-  .stats{
-    background: #f2f5f8 !important;
-    color: #000 !important;
-  }
-  .articles{
-    font-size:10px;
-    color: #a1aab9;
-  }
-  .number1{
-    font-weight:500;
-    font-size: 15px;
-  }
-  .followers{
-    font-size:10px;
-    color: #a1aab9;
-  }
-  .number2{
-    font-weight:500;
-    font-size: 15px;
-  }
-  .rating{
-    font-size:10px;
-    color: #a1aab9;
-  }
-  .number3{
-    font-weight:500;
-    font-size: 15px;
-  }
-  .details{
-    gap: 50px;
-  }
-  .edit-logout{
-    margin-top: 30px;
-  }
-  .card-details{
-    margin-top: 12rem !important;
-  }
-  .heading{
-      margin: auto;
-  }
+.card {
+  width: 70%;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.stats {
+  background: #f2f5f8 !important;
+  color: #000 !important;
+}
+.articles {
+  font-size: 10px;
+  color: #a1aab9;
+}
+.number1 {
+  font-weight: 500;
+  font-size: 15px;
+}
+.followers {
+  font-size: 10px;
+  color: #a1aab9;
+}
+.number2 {
+  font-weight: 500;
+  font-size: 15px;
+}
+.rating {
+  font-size: 10px;
+  color: #a1aab9;
+}
+.number3 {
+  font-weight: 500;
+  font-size: 15px;
+}
+.details {
+  gap: 50px;
+}
+.edit-logout {
+  margin-top: 30px;
+}
+.card-details {
+  margin-top: 12rem !important;
+}
+.heading {
+  margin: auto;
+}
+.leave-type {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-clip: padding-box;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.leave-type:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+.leave-submit {
+  text-align: center;
+}
+.leave-reason {
+  padding: 0px 0px;
+}
+.apply-leave-form {
+  margin-top: 7rem;
+}
+.apply-submit-button {
+  margin-top: 10px;
+}

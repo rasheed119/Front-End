@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./style.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import UseAdminStore from "../Store/store";
+import UseAdminStore from "../Store/AdminStore";
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -19,7 +19,7 @@ const Login = () => {
       .post("http://localhost:3000/auth/adminlogin", values)
       .then((result) => {
         if (result.data.loginStatus) {
-          localStorage.setItem("valid", true);
+          localStorage.setItem("admin", true);
           login({
             id: result.data.id,
             Name: result.data.Name,

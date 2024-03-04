@@ -183,7 +183,7 @@ const AddEmployee = () => {
                   <span>Loading...</span>
                 </>
               ) : (
-                "Add Admin"
+                "Add Employee"
               )}
             </button>
           </div>

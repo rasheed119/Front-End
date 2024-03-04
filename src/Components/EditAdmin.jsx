@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState, } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import UseAdminStore from "../Store/store";
+import UseAdminStore from "../Store/AdminStore";
 
 const EditAdmin = () => {
   const { data, update } = UseAdminStore((state) => state);
@@ -17,8 +17,8 @@ const EditAdmin = () => {
       .put(`http://localhost:3000/auth/edit_admin/${+data.id}`, admin)
       .then((result) => {
         if (result.data.Status) {
-          update({ id : data.id, Name: admin.name, email: admin.email });
-          alert("Updated")
+          update({ id: data.id, Name: admin.name, email: admin.email });
+          alert("Updated");
           navigate("/dashboard");
         } else {
           alert(result.data.Error);

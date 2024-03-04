@@ -1,7 +1,7 @@
 import axios, { all } from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UseAdminStore from "../Store/store";
+import UseAdminStore from "../Store/AdminStore";
 
 const Home = () => {
   const [adminTotal, setAdminTotal] = useState(0);

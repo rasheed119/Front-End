@@ -16,6 +16,9 @@ import EmployeeDetail from "./Components/EmployeeDetail";
 import PrivateRoute from "./Components/PrivateRoute";
 import EditAdmin from "./Components/EditAdmin";
 import Addadmin from "./Components/Addadmin";
+import Leave from "./Components/ApplyLeave";
+import ApplyLeave from "./Components/ApplyLeave";
+import EmployeeDashboard from "./Components/EmployeeDashboard";
 
 function App() {
   return (
@@ -24,7 +27,13 @@ function App() {
         <Route path="/" element={<Start />}></Route>
         <Route path="/adminlogin" element={<Login />}></Route>
         <Route path="/employee_login" element={<EmployeeLogin />}></Route>
-        <Route path="/employee_detail/:id" element={<EmployeeDetail />}></Route>
+        <Route path="/employee" element={<EmployeeDashboard />}>
+          <Route
+            path="/employee/employee_detail"
+            element={<EmployeeDetail />}
+          ></Route>
+          <Route path="/employee/apply_leave" element={<ApplyLeave />} />
+        </Route>
         <Route
           path="/dashboard"
           element={

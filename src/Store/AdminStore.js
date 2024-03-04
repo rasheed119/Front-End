@@ -17,11 +17,7 @@ const adminstore = (set) => ({
     })),
   logout: () =>
     set(() => ({
-      data: {
-        id: "",
-        Name: "",
-        email: "",
-      },
+      data: {},
     })),
 });
 

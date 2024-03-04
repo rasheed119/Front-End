@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UseEmployeeStore from "../Store/EmployeeStore";
-
+ 
 const ApplyLeave = () => {
   const { id } = UseEmployeeStore((store) => store.data);
   const [Date, setdate] = useState();
-
+  const navigate = useNavigate();
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(Date);

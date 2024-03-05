@@ -6,7 +6,7 @@ import Dashboard from "./Components/Dashboard";
 import Home from "./Components/Home";
 import Employee from "./Components/Employee";
 import Category from "./Components/Category";
-import Profile from "./Components/Profile";
+import LeaveRequests from "./Components/LeaveRequests";
 import AddCategory from "./Components/AddCategory";
 import AddEmployee from "./Components/AddEmployee";
 import EditEmployee from "./Components/EditEmployee";
@@ -16,9 +16,9 @@ import EmployeeDetail from "./Components/EmployeeDetail";
 import PrivateRoute from "./Components/PrivateRoute";
 import EditAdmin from "./Components/EditAdmin";
 import Addadmin from "./Components/Addadmin";
-import Leave from "./Components/ApplyLeave";
 import ApplyLeave from "./Components/ApplyLeave";
 import EmployeeDashboard from "./Components/EmployeeDashboard";
+import LeaveHistory from "./Components/LeaveHistory";
 
 function App() {
   return (
@@ -31,8 +31,9 @@ function App() {
           <Route
             path="/employee/employee_detail"
             element={<EmployeeDetail />}
-          ></Route>
+          />
           <Route path="/employee/apply_leave" element={<ApplyLeave />} />
+          <Route path="/employee/leave_history" element={<LeaveHistory />} />
         </Route>
         <Route
           path="/dashboard"
@@ -45,7 +46,7 @@ function App() {
           <Route path="" element={<Home />}></Route>
           <Route path="/dashboard/employee" element={<Employee />}></Route>
           <Route path="/dashboard/category" element={<Category />}></Route>
-          <Route path="/dashboard/profile" element={<Profile />}></Route>
+          <Route path="/dashboard/leave_requests" element={<LeaveRequests />}></Route>
           <Route
             path="/dashboard/add_category"
             element={<AddCategory />}

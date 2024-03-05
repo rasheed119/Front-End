@@ -5,7 +5,7 @@ import axios from "axios";
 import UseAdminStore from "../Store/AdminStore";
 
 const Dashboard = () => {
-  const {logout} = UseAdminStore((store)=>store)
+  const { logout } = UseAdminStore((store) => store);
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
   const handleLogout = () => {
@@ -68,11 +68,11 @@ const Dashboard = () => {
               </li>
               <li className="w-100">
                 <Link
-                  to="/dashboard/profile"
+                  to="/dashboard/leave_requests"
                   className="nav-link px-0 d-flex align-items-center text-white gap-2"
                 >
                   <i className="fs-4 bi-person ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Profile</span>
+                  <span className="ms-2 d-none d-sm-inline">Leave Request</span>
                 </Link>
               </li>
               <li className="w-100" onClick={handleLogout}>

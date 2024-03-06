@@ -21,14 +21,14 @@ const EmployeeLogin = () => {
         if (result.data.loginStatus) {
           localStorage.setItem("employee", true);
           login({
-            id : result.data.id,
-            name : result.data.name,
-            email : result.data.email,
-            address : result.data.address,
-            salary : result.data.salary,
-            category : result.data.category,
-            image : result.data.image
-          })
+            id: result.data.id,
+            name: result.data.name,
+            email: result.data.email,
+            address: result.data.address,
+            salary: result.data.salary,
+            category: result.data.category,
+            image: result.data.image,
+          });
           navigate("/employee/employee_detail");
         } else {
           setError(result.data.Error);

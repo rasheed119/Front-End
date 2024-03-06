@@ -7,6 +7,7 @@ const adminstore = (set) => ({
     Name: "",
     email: "",
   },
+  leave: [],
   login: (admindata) =>
     set(() => ({
       data: admindata,
@@ -18,6 +19,14 @@ const adminstore = (set) => ({
   logout: () =>
     set(() => ({
       data: {},
+    })),
+  getleave: (leave_data) =>
+    set(() => ({
+      leave: leave_data,
+    })),
+  remove_leave: (leave_id) =>
+    set((state) => ({
+      leave: state.leave.filter((leave) => leave.id !== leave_id),
     })),
 });
 

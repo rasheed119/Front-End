@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import UseAdminStore from "../Store/AdminStore";
-import Requesrrows from "./LeaveRequestRows";
+import LeaveRequestRows from "./LeaveRequestRows";
 import Icon from "../assets/icon.png";
 
 const LeaveRequests = () => {
@@ -48,13 +48,14 @@ const LeaveRequests = () => {
               <th scope="col">Type</th>
               <th scope="col">From</th>
               <th scope="col">To</th>
+              <th scope="col">Days</th>
               <th scope="col">Reason</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
             {Pending_Leave.map((leave, index) => (
-              <Requesrrows leave={leave} key={index} sno={index + 1} />
+              <LeaveRequestRows leave={leave} key={index} sno={index + 1} />
             ))}
           </tbody>
         </table>

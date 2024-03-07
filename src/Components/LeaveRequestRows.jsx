@@ -39,6 +39,11 @@ function LeaveRequestRows({ leave, sno }) {
       console.log(error);
     }
   };
+  const total_days = (start, end) => {
+    const start_date = dayjs(start);
+    const end_Date = dayjs(end);
+    return end_Date.diff(start_date, "days");
+  };
   return (
     <>
       <tr>
@@ -47,6 +52,7 @@ function LeaveRequestRows({ leave, sno }) {
         <td>{leave.type}</td>
         <td>{format_date(leave.From)}</td>
         <td>{format_date(leave.To)}</td>
+        <td>{total_days(format_date(leave.From), format_date(leave.To))} d</td>
         <td>{leave.Reason}</td>
         <td>
           <div className="d-flex gap-2">

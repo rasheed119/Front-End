@@ -116,7 +116,7 @@ const ApplyLeave = () => {
                   onBlur={handleBlur}
                   name="type"
                 >
-                  <option></option>
+                  <option>Select Leave Type</option>
                   <option value="Sick Leave">Sick Leave</option>
                   <option value="Casual Leave">Casual Leave</option>
                   <option value="Loss of Pay">Loss of Pay</option>

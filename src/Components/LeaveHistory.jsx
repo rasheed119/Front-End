@@ -53,8 +53,12 @@ function LeaveHistory() {
               </td>
               <td>{leave.Reason}</td>
               <td
-                className={`${leave.Status === "Approved" && "text-success"} ${
-                  leave.Status === "Declined" && "text-danger"
+                className={`${
+                  leave.Status === "Approved" &&
+                  "text-white bg-success rounded text-center"
+                } ${
+                  leave.Status === "Declined" &&
+                  "text-white bg-danger rounded text-center"
                 }`}
               >
                 {leave.Status}

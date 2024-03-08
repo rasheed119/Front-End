@@ -11,6 +11,7 @@ const employeestore = (set) => ({
     image: "",
     category: "",
   },
+  History: false,
   login: (employeedata) =>
     set(() => ({
       data: employeedata,
@@ -18,6 +19,10 @@ const employeestore = (set) => ({
   logout: () =>
     set(() => ({
       data: {},
+    })),
+  pagechange: () =>
+    set((state) => ({
+      History: !state.History,
     })),
 });
 

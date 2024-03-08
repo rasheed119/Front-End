@@ -37,7 +37,7 @@ const leave_form_validation = yup.object().shape({
 const ApplyLeave = () => {
   const { id } = UseEmployeeStore((store) => store.data);
   const [Loading, setLoading] = useState(false);
-  const [History, showHistory] = useState(false);
+  const { History, pagechange } = UseEmployeeStore((store) => store);
 
   const { values, handleChange, handleSubmit, handleBlur, errors, touched } =
     useFormik({
@@ -90,12 +90,12 @@ const ApplyLeave = () => {
             className={`text-decoration-none text-black border ${
               !History && `bg-primary text-white`
             } border-primary px-2 py-1 rounded-start`}
-            onClick={() => showHistory((his) => !his)}
+            onClick={() => pagechange()}
           >
             Apply Form
           </button>
           <button
-            onClick={() => showHistory((his) => !his)}
+            onClick={() => pagechange()}
             className={`text-decoration-none text-black border ${
               History && `bg-primary text-white`
             } border-primary px-2 py-1 rounded-end`}

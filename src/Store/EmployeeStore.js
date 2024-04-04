@@ -19,11 +19,12 @@ const employeestore = (set) => ({
   logout: () =>
     set(() => ({
       data: {},
+      History: false,
     })),
   pagechange: () =>
     set((state) => ({
       History: !state.History,
-    })),
+    }))
 });
 
 const UseEmployeeStore = create(

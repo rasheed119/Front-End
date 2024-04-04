@@ -9,20 +9,7 @@ const LeaveRequests = () => {
   var [searchTerm, setsearchTerm] = useState("");
   const [filterby, setfilterby] = useState("");
   const [leave_type, setleave_type] = useState("");
-  const { getleave } = UseAdminStore((store) => store);
-  useEffect(() => {
-    const fetch_pending_leave = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3000/auth/pending_leave"
-        );
-        getleave(response.data.pending_leave);
-      } catch (error) {
-        console.log(error, "USE_EFFECT_ERROR");
-      }
-    };
-    fetch_pending_leave();
-  }, []);
+
   const filter = Pending_Leave.filter((val) => {
     if (searchTerm === "" && leave_type === "" && filterby === "") {
       return val;
@@ -78,7 +65,9 @@ const LeaveRequests = () => {
                   value=""
                   /* When the Filter by option is Clicked to Clear Leave Type */
                   onClick={() => {
+                    setfilterby("");
                     setleave_type("");
+                    setsearchTerm("");
                   }}
                 >
                   Filter by

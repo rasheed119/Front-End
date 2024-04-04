@@ -3,9 +3,10 @@ import "./style.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import UseEmployeeStore from "../Store/EmployeeStore";
+import { toast } from "react-toastify";
 
 const EmployeeLogin = () => {
-  const { data, login } = UseEmployeeStore((store) => store);
+  const { login } = UseEmployeeStore((store) => store);
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -28,6 +29,15 @@ const EmployeeLogin = () => {
             salary: result.data.salary,
             category: result.data.category,
             image: result.data.image,
+          });
+          toast.success("Log In Successfull", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
           });
           navigate("/employee/employee_detail");
         } else {

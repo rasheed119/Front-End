@@ -19,6 +19,11 @@ import Addadmin from "./Components/Addadmin";
 import ApplyLeave from "./Components/ApplyLeave";
 import EmployeeDashboard from "./Components/EmployeeDashboard";
 import LeaveHistory from "./Components/LeaveHistory";
+import Announcement from "./Components/Announcement";
+import { ToastContainer } from "react-toastify";
+import EmAnnouncement from "./Components/EmAnnouncement";
+import AnnouncementHistory from "./Components/AnnouncementHistory";
+import ToDo from "./Components/ToDo";
 
 function App() {
   return (
@@ -34,6 +39,8 @@ function App() {
           />
           <Route path="/employee/apply_leave" element={<ApplyLeave />} />
           <Route path="/employee/leave_history" element={<LeaveHistory />} />
+          <Route path="/employee/announcement" element={<EmAnnouncement />} />
+          <Route path="/employee/todo" element={<ToDo />} />
         </Route>
         <Route
           path="/dashboard"
@@ -46,7 +53,10 @@ function App() {
           <Route path="" element={<Home />}></Route>
           <Route path="/dashboard/employee" element={<Employee />}></Route>
           <Route path="/dashboard/category" element={<Category />}></Route>
-          <Route path="/dashboard/leave_requests" element={<LeaveRequests />}></Route>
+          <Route
+            path="/dashboard/leave_requests"
+            element={<LeaveRequests />}
+          ></Route>
           <Route
             path="/dashboard/add_category"
             element={<AddCategory />}
@@ -61,8 +71,22 @@ function App() {
           ></Route>
           <Route path="/dashboard/edit_admin" element={<EditAdmin />}></Route>
           <Route path="/dashboard/add_admin" element={<Addadmin />} />
+          <Route path="/dashboard/announcement" element={<Announcement />} />
+          <Route path="/dashboard/announcement/history" element={<AnnouncementHistory/>} />
         </Route>
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </BrowserRouter>
   );
 }

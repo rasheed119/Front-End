@@ -1,21 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import axios from "axios";
 import UseEmployeeStore from "../Store/EmployeeStore";
+import { toast } from "react-toastify";
 
 const EmployeeDashboard = () => {
   const navigate = useNavigate();
   const { logout } = UseEmployeeStore((store) => store);
+  const [active, setactive] = useState({
+    profile: true,
+    todo: false,
+    leave: false,
+    announcements: false,
+  });
   axios.defaults.withCredentials = true;
   const handleLogout = () => {
     axios.get("http://localhost:3000/employee/logout").then((result) => {
       if (result.data.Status) {
         localStorage.removeItem("employee");
         logout();
+        toast.success("Logged Out Successfull", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         navigate("/");
       }
     });
+  };
+  const showactive = (menu) => {
+    setactive((prestate) => ({
+      ...prestate,
+      profile: false,
+      todo: false,
+      leave: false,
+      announcements: false,
+      [menu]: true,
+    }));
   };
   return (
     <div className="container-fluid">
@@ -34,7 +60,10 @@ const EmployeeDashboard = () => {
               <li className="w-100">
                 <Link
                   to="/employee/employee_detail"
-                  className="nav-link px-0 d-flex align-items-center gap-2 text-white"
+                  className={`nav-link px-0 d-flex align-items-center gap-2 text-white ${
+                    active.profile && "active"
+                  }`}
+                  onClick={() => showactive("profile")}
                 >
                   <i className="fs-4 bi-person ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">Profile</span>
@@ -42,11 +71,39 @@ const EmployeeDashboard = () => {
               </li>
               <li className="w-100">
                 <Link
-                  className="nav-link px-0 d-flex align-items-center gap-2 text-white"
+                  to="/employee/todo"
+                  className={`nav-link px-0 d-flex align-items-center gap-2 text-white ${
+                    active.todo && "active"
+                  }`}
+                  style={{ height: "50px" }}
+                  onClick={() => showactive("todo")}
+                >
+                  <i class="bi bi-check2-square ms-2"></i>
+                  <span className="ms-2 d-none d-sm-inline">To Do</span>
+                </Link>
+              </li>
+              <li className="w-100">
+                <Link
+                  className={`nav-link px-0 d-flex align-items-center gap-2 text-white ${
+                    active.leave && "active"
+                  }`}
                   to={"/employee/apply_leave"}
+                  onClick={() => showactive("leave")}
                 >
                   <i class="fs-4 bi-person-fill-dash ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">Apply Leave</span>
+                </Link>
+              </li>
+              <li className="w-100">
+                <Link
+                  className={`nav-link px-0 d-flex align-items-center gap-2 text-white ${
+                    active.announcements && "active"
+                  }`}
+                  to={"/employee/announcement"}
+                  onClick={() => showactive("announcements")}
+                >
+                  <i class="fs-4 bi-megaphone ms-2"></i>
+                  <span className="ms-2 d-none d-sm-inline">Announcements</span>
                 </Link>
               </li>
               <li className="w-100" onClick={handleLogout}>

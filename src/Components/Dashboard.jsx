@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import axios from "axios";
 import UseAdminStore from "../Store/AdminStore";
 
 const Dashboard = () => {
-  const { logout } = UseAdminStore((store) => store);
+  const { logout, getleave, leave } = UseAdminStore((store) => store);
+  useEffect(() => {
+    const fetch_pending_leave = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3000/auth/pending_leave"
+        );
+        getleave(response.data.pending_leave);
+      } catch (error) {
+        console.log(error, "USE_EFFECT_ERROR");
+      }
+    };
+    fetch_pending_leave();
+  }, []);
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
   const handleLogout = () => {
@@ -73,6 +86,27 @@ const Dashboard = () => {
                 >
                   <i className="fs-4 bi-person ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">Leave Request</span>
+                  {leave.length > 0 && (
+                    <span
+                      style={{
+                        backgroundColor: "white",
+                        borderRadius: "50%",
+                        color: "black",
+                      }}
+                      class="badge badge-info"
+                    >
+                      {leave.length}
+                    </span>
+                  )}
+                </Link>
+              </li>
+              <li className="w-100">
+                <Link
+                  to="/dashboard/announcement"
+                  className="nav-link px-0 d-flex align-items-center text-white gap-2"
+                >
+                  <i class="fs-4 bi-megaphone ms-2"></i>
+                  <span className="ms-2 d-none d-sm-inline">Announcement</span>
                 </Link>
               </li>
               <li className="w-100" onClick={handleLogout}>

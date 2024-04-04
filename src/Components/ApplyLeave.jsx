@@ -4,7 +4,7 @@ import UseEmployeeStore from "../Store/EmployeeStore";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import LeaveHistory from "./LeaveHistory";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -209,18 +209,7 @@ const ApplyLeave = () => {
         )}
         {History && <LeaveHistory />}
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+
     </div>
   );
 };

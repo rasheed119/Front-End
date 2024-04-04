@@ -3,6 +3,7 @@ import "./style.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import UseAdminStore from "../Store/AdminStore";
+import {toast} from "react-toastify"
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -24,6 +25,15 @@ const Login = () => {
             id: result.data.id,
             Name: result.data.Name,
             email: result.data.email,
+          });
+          toast.success("Log In Successfull", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
           });
           navigate("/dashboard");
         } else {
